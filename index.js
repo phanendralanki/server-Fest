@@ -1,0 +1,31 @@
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+import technicalEventRoutes from "./routes/technicalEvents.routes.js";
+
+dotenv.config();
+
+const app = express();
+app.use(express.json());
+
+const PORT = process.env.PORT;
+
+//routes
+app.use("/api/technicalEvents",technicalEventRoutes);
+
+//db connection
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("connected to database");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+app.listen(PORT, () => {
+  console.log(`server is running on port ${PORT}`);
+});
+
+
