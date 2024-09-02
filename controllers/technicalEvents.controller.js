@@ -15,6 +15,7 @@ export const registerTechnicalEvent = async (req,res)=> {
         await event.save();
         res.status(201).json(event);
     }catch(error){
+        console.error('Error registering technical event:', error);
         res.status(500).json({message:error?.message});
     }
 };
