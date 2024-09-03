@@ -22,6 +22,11 @@ app.use("/api/onlineGames",onlineGameRoutes);
 app.use("/api/offlineGames",offlineGameRoutes);
 app.use("/api/crazyEvent",crazyEventRoutes);
 
+
+app.get("/test",(req,res)=>{
+  console.log("Working...");
+})
+
 //db connection
 mongoose
   .connect(process.env.MONGO_URI)
